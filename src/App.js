@@ -45,7 +45,7 @@ class App extends React.Component {
           <Tab eventKey="Open Tasks" title="Active Tasks">
                   <List status="active"></List>
           </Tab>
-          <Tab eventKey="Finished Tasks" title="Finished Tasks">
+          <Tab eventKey="Completed Tasks" title="Completed Tasks">
           <List status="completed"></List>
           </Tab>
         </Tabs>

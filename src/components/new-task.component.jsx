@@ -38,7 +38,7 @@ class NewTaskForm extends React.Component {
                 }/>
       </Form.Group>
       <Button variant="primary" type="submit" onClick={(e) => this.submitNewTask(e)}>
-    Submit
+    Create new task
   </Button>
     </Form>
     );
