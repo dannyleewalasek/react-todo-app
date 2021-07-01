@@ -19,6 +19,7 @@ class NewTaskForm extends React.Component {
     addTask({
       title: this.state.title,
       description: this.state.description,
+     // date: Date.now()
     });
   };
 

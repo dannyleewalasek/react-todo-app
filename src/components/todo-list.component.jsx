@@ -4,15 +4,14 @@ import ListItem from "./list-item.component";
 import styled from "styled-components";
 
 const ToDoList = () => {
-  const contextState = useContext(ToDoContext);
-  const tasks = contextState.tasks;
+  const {activeTasks}  = useContext(ToDoContext);
   return (
     <div>
-      {Object.keys(tasks).map((title) => (
+      {Object.keys(activeTasks).map((title) => (
         <ListItem
           key={title}
           title={title}
-          description={tasks[title]}
+          description={activeTasks[title]}
         ></ListItem>
       ))}
     </div>

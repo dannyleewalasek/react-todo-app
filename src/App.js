@@ -10,18 +10,20 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: { one: 1 },
+      activeTasks: { one: 1 },
+      completedTasks: { one: 1 },
       addTask: ({ title, description }) => {
         this.setState({
-          tasks: { ...this.state.tasks, [title]: description },
+          activeTasks: { ...this.state.activeTasks, [title]: description },
         });
       },
-      removeTask: (title) => {
-        console.log(title);
-        let stateTasks = { ...this.state.tasks };
+      completeTask: (title) => {
+        let stateTasks = { ...this.state.activeTasks };
+        const completedTask = stateTasks[title];
         delete stateTasks[title];
         this.setState({
-          tasks: stateTasks,
+          activeTasks: stateTasks,
+         completedTasks : {...this.state.completedTasks, completedTask}
         });
       },
     };
@@ -34,8 +36,8 @@ class App extends React.Component {
         <ToDoContext.Provider
           value={{
             addTask: this.state.addTask,
-            tasks: this.state.tasks,
-            removeTask: this.state.removeTask,
+            activeTasks: this.state.activeTasks,
+            completeTask: this.state.completeTask,
           }}
         >
         <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">

@@ -1,10 +1,5 @@
 import { createContext } from "react";
 
-const ToDoContext = createContext({
-  tasks: {
-    1: 2,
-    2: 3,
-  },
-});
+const ToDoContext = createContext();
 
 export default ToDoContext;
