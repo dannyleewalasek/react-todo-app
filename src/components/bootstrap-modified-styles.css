@@ -1,4 +1,23 @@
-.activeTask {
-    background-color:rgba(0, 128, 0, 0.418);
+body .toast-header-active {
+    background-color:#007bff;
     color:white;
+}
+
+body .toast-header-completed {
+    background-color:#dc3545;
+    color:white;
+}
+
+body .toast {
+    width:100%;
+    max-width:100%;
+}
+
+.Form{
+    padding:32px 0;
+}
+
+.List{
+    padding:16px;
+    width:100%;
 }

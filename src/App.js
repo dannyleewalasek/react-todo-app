@@ -3,7 +3,7 @@ import "./App.css";
 import React from "react";
 import ToDoContext from "./context/todo-context";
 import NewTaskForm from "./components/new-task.component";
-import ToDoList from "./components/todo-list.component";
+import List from "./components/todo-list.component";
 import {Tab, Tabs} from 'react-bootstrap';
 
 class App extends React.Component {
@@ -40,13 +40,13 @@ class App extends React.Component {
             completeTask: this.state.completeTask,
           }}
         >
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
-          <Tab eventKey="Open Tasks" title="Open Tasks">
           <NewTaskForm></NewTaskForm>
-                  <ToDoList></ToDoList>
+        <Tabs defaultActiveKey="Open Tasks" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="Open Tasks" title="Active Tasks">
+                  <List status="active"></List>
           </Tab>
-          <Tab eventKey="Active Tasks" title="Active Tasks">
-            DONE GO HERE
+          <Tab eventKey="Finished Tasks" title="Finished Tasks">
+          <List status="completed"></List>
           </Tab>
         </Tabs>
           

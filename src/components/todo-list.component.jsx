@@ -1,21 +1,23 @@
 import React, { useContext } from "react";
 import ToDoContext from "../context/todo-context";
 import ListItem from "./list-item.component";
-import styled from "styled-components";
+import './bootstrap-modified-styles.css';
 
-const ToDoList = () => {
-  const {activeTasks}  = useContext(ToDoContext);
+
+const List = ({status}) => {
+  const {activeTasks}  =  useContext(ToDoContext);
   return (
-    <div>
+    <div className="List">
       {Object.keys(activeTasks).map((title) => (
         <ListItem
           key={title}
           title={title}
           description={activeTasks[title]}
+          status={status}
         ></ListItem>
       ))}
     </div>
   );
 };
 
-export default ToDoList;
+export default List;

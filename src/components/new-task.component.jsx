@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ToDoContext from "../context/todo-context";
 import {Form, Button} from 'react-bootstrap';
+import './bootstrap-modified-styles.css';
 
 class NewTaskForm extends React.Component {
   static contextType = ToDoContext;
@@ -25,7 +26,7 @@ class NewTaskForm extends React.Component {
 
   render() {
     return (
-      <Form>
+      <Form className="Form">
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Title</Form.Label>
         <Form.Control type="text" placeholder="name@example.com" onChange={(event) => this.setState({ title: event.target.value })}/>
