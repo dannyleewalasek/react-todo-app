@@ -39,11 +39,11 @@ class App extends React.Component {
           }}
         >
         <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
-          <Tab eventKey="Open Tasks" title="Home">
+          <Tab eventKey="Open Tasks" title="Open Tasks">
           <NewTaskForm></NewTaskForm>
                   <ToDoList></ToDoList>
           </Tab>
-          <Tab eventKey="Completed Tasks" title="Profile">
+          <Tab eventKey="Active Tasks" title="Active Tasks">
             DONE GO HERE
           </Tab>
         </Tabs>
