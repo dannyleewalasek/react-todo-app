@@ -1,27 +1,21 @@
 import React, { useContext } from "react";
+import Toast from 'react-bootstrap/Toast'
 import ToDoContext from "../context/todo-context";
-import styled from "styled-components";
 
 const ListItem = ({ title, description }) => {
   const contextState = useContext(ToDoContext);
   const { removeTask } = contextState;
   return (
-    <Item onClick={() => removeTask(title)}>
-      <span>{title}</span>
-      <span>{description}</span>
-    </Item>
+<Toast onClose={() => removeTask(title)}>
+  <Toast.Header>
+    <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
+    <strong className="mr-auto">{title}</strong>
+    <small>11 mins ago</small>
+  </Toast.Header>
+  <Toast.Body>{description}</Toast.Body>
+</Toast>
   );
 };
 
-const Item = styled.div`
-  background-color: blue;
-  box-sixing: border-box;
-  width: 50%;
-  transition: 2s;
-
-  :hover {
-    background-color: green;
-  }
-`;
 
 export default ListItem;

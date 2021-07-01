@@ -7,7 +7,7 @@ const ToDoList = () => {
   const contextState = useContext(ToDoContext);
   const tasks = contextState.tasks;
   return (
-    <StyledList>
+    <div>
       {Object.keys(tasks).map((title) => (
         <ListItem
           key={title}
@@ -15,12 +15,8 @@ const ToDoList = () => {
           description={tasks[title]}
         ></ListItem>
       ))}
-    </StyledList>
+    </div>
   );
 };
-
-const StyledList = styled.div`
-  background-color: green;
-`;
 
 export default ToDoList;

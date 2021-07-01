@@ -4,6 +4,7 @@ import React from "react";
 import ToDoContext from "./context/todo-context";
 import NewTaskForm from "./components/new-task.component";
 import ToDoList from "./components/todo-list.component";
+import {Tab, Tabs} from 'react-bootstrap';
 
 class App extends React.Component {
   constructor() {
@@ -37,8 +38,16 @@ class App extends React.Component {
             removeTask: this.state.removeTask,
           }}
         >
+        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="Open Tasks" title="Home">
           <NewTaskForm></NewTaskForm>
-          <ToDoList></ToDoList>
+                  <ToDoList></ToDoList>
+          </Tab>
+          <Tab eventKey="Completed Tasks" title="Profile">
+            DONE GO HERE
+          </Tab>
+        </Tabs>
+          
         </ToDoContext.Provider>
       </div>
     );
