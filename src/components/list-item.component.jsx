@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Toast from "react-bootstrap/Toast";
-import ToDoContext from "../context/todo-context";
 import "./bootstrap-modified-styles.css";
 
 const ListItem = ({ title, description, status, onclose }) => {

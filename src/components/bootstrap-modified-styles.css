@@ -9,8 +9,10 @@ body .toast-header-completed {
 }
 
 body .toast {
-    width:100%;
-    max-width:100%;
+    flex-basis:30%;
+    margin: 1%;
+    max-width:50%;
+    align-items: flex-start;
 }
 
 .Form{
@@ -20,4 +22,7 @@ body .toast {
 .List{
     padding:16px;
     width:100%;
+    display:flex;
+    justify-content: left;
+    flex-wrap: wrap;
 }
