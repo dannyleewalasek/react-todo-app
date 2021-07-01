@@ -1,47 +1,84 @@
 import React, { Component } from "react";
-import { Provider } from "./todo-context";
+import ToDoContext from "./todo-context";
 
-class Parent extends Component {
-  state = {
-    toggleGrandChild: false,
-    toggleName: false,
-    people: [
-      { id: 0, name: "Bob", age: 24 },
-      { id: 1, name: "Jack", age: 22 },
-      { id: 2, name: "Jill", age: 26 },
-    ],
-  };
+class Provider extends React.Component {
+  constructor(props) {
+    super(props);
+    let savedData = null;
+    try {
+      savedData = JSON.parse(localStorage.getItem("toDoList"));
+    } catch (err) {
+      console.log(err);
+    }
+    if (!savedData) {
+      this.state = {
+        activeTasks: { act: 1 },
+        completedTasks: { comp: 1 },
+        addTask: ({ title, description }) => {
+          this.setState({
+            activeTasks: { ...this.state.activeTasks, [title]: description },
+          });
+          this.saveState();
+        },
+        completeTask: (title) => {
+          let stateTasks = { ...this.state.activeTasks };
+          const removed = stateTasks[title];
+          delete stateTasks[title];
+          this.setState({
+            activeTasks: stateTasks,
+            completedTasks: {
+              ...this.state.completedTasks,
+              [title]: removed,
+            },
+          });
+          this.saveState();
+        },
+      };
+    } else {
+      //FUNCTIONS ARE WRITTEN TWICE
+      this.state = {
+        ...savedData,
+        addTask: ({ title, description }) => {
+          this.setState({
+            activeTasks: { ...this.state.activeTasks, [title]: description },
+          });
+          this.saveState();
+        },
+        completeTask: (title) => {
+          let stateTasks = { ...this.state.activeTasks };
+          const removed = stateTasks[title];
+          delete stateTasks[title];
+          this.setState({
+            activeTasks: stateTasks,
+            completedTasks: {
+              ...this.state.completedTasks,
+              [title]: removed,
+            },
+          });
+          this.saveState();
+        },
+      };
+    }
+  }
 
-  toggleComponent = () => {
-    this.setState({
-      toggleGrandChild: !this.state.toggleGrandChild,
-    });
-  };
-
-  switchNameHandler = (newName) => {
-    this.setState({
-      toggleName: !this.state.toggleName,
-      people: [
-        { id: 0, name: newName, age: 24 },
-        { id: 1, name: "Jack", age: 22 },
-        { id: 2, name: "Jill", age: 26 },
-      ],
-    });
+  saveState = () => {
+    localStorage.setItem("toDoList", JSON.stringify(this.state));
   };
 
   render() {
     return (
-      <Provider
+      <ToDoContext.Provider
         value={{
-          state: this.state,
-          toggleComponent: this.toggleComponent,
-          switchNameHandler: (e) => this.switchNameHandler(e),
+          addTask: this.state.addTask,
+          activeTasks: this.state.activeTasks,
+          completeTask: this.state.completeTask,
+          completedTasks: this.state.completedTasks,
         }}
       >
         {this.props.children}
-      </Provider>
+      </ToDoContext.Provider>
     );
   }
 }
 
-export default Parent;
+export default Provider;
