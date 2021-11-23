@@ -1,6 +1,6 @@
 # To-Do
 
-This project was made using ReactJS.
+This project was made using ReactJS and Bootstrap.
 
 ## Available Scripts
 
