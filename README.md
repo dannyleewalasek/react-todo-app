@@ -1,6 +1,8 @@
 
  <h1> 
+<center>
   React to-do app
+	</center>
   <br>
 </h1>
 
